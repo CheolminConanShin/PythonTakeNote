@@ -5,7 +5,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>20b5e1c6-ce92-4caa-9561-65cd16a85d2c</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>de_constructor.py</StartupFile>
+    <StartupFile>Inheritnace.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -22,13 +22,21 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="runtime_environment.py" />
-    <Compile Include="de_constructor.py">
+    <Compile Include="Inheritance2.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="inheriatnace.py">
+    <Compile Include="Operator_Overide.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Runtime_Environment.py" />
+    <Compile Include="De_Constructor.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Inheritnace.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="연산자오버로딩.py" />
+    <Compile Include="정적메서드_클래스메서드.py" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -1,21 +1,18 @@
-# -*- coding: cp949 -*-
 class CounterManager:
-    insCount = 0
+    __insCount = 0
     def __init__(self):
-        CounterManager.insCount += 1
+        CounterManager.__insCount += 1
+    @staticmethod #데코레이터 선언(어노테이션)
     def staticPrintCount():  #정적 메서드 정의 
-        print("Instance Count: ", CounterManager.insCount)
-    SPrintCount = staticmethod(staticPrintCount) #정적 메서드 등록 
-    
+        print("Instance Count: ", CounterManager.__insCount)
+    @classmethod
     def classPrintCount(cls): #클래스 메서드 정의(암묵적으로 첫 인자는 클래스를 받음)
-        print("Instance Count: ", cls.insCount)
-    CPrintCount = classmethod(classPrintCount) #클래스 메서드로 등록 
+        print("Instance Count: ", cls.__insCount)
         
 a, b, c = CounterManager(), CounterManager(), CounterManager()
 
 #정적 메서드로 인스턴스 객체 개수를 출력 
-CounterManager.SPrintCount()
+CounterManager.staticPrintCount()
 b.SPrintCount()
 #클래스 메서드로 인스턴스 객체 개수를 출력 
-CounterManager.CPrintCount()
-b.CPrintCount() 
+CounterManager.classPrintCount()
