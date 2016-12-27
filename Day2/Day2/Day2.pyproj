@@ -5,7 +5,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>20b5e1c6-ce92-4caa-9561-65cd16a85d2c</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>Inheritnace.py</StartupFile>
+    <StartupFile>다중상속01.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -35,6 +35,7 @@
     <Compile Include="Inheritnace.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="다중상속01.py" />
     <Compile Include="연산자오버로딩.py" />
     <Compile Include="정적메서드_클래스메서드.py" />
   </ItemGroup>
