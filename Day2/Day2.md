@@ -50,3 +50,17 @@
 12
 13
 ```
+
+##### Python Class Declaration
+```python
+>>> class Person:
+	"""클래스에 대한 설명을 다중 라인으로
+	추가할 경우에 사용"""
+
+	Name = "Default Name"
+	def Print(self):
+		print("My name is {0}".format(self.Name))
+>>> p1 = Person()
+>>> p1.Print()
+My name is Default Name
+```
