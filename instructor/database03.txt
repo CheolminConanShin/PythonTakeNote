@@ -1,0 +1,13 @@
+>>> import sqlite3
+>>> con = sqlite3.connect(":memory:")
+>>> cur = con.cursor()
+>>> cur.execute("create table User(Name text, Age int);")
+<sqlite3.Cursor object at 0x02DB73A0>
+>>> list = (('Tom','16'), ('DSP','33'), ('Derick','25'))
+>>> cur.executemany("insert into User values(?,?);", list)
+<sqlite3.Cursor object at 0x02DB73A0>
+>>> con.create_aggregate("avg", 1, Average)
+>>> cur.execute("select avg(Age) from User")
+<sqlite3.Cursor object at 0x02DB73A0>
+>>> print(cur.fetchone()[0])
+24.666666666666668

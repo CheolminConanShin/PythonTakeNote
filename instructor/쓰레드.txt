@@ -1,0 +1,19 @@
+*프로세스와 쓰레드 
+
+word.exe(프로세스)
+======
+메인 쓰레드(포그라운드 쓰레드)
+백그라운드 쓰레드(복잡한 계산, 파일처리...) 
+======
+
+>>> import threading, time
+>>> def myThreadFunction(id):
+	for i in range(4):
+		print("id %s -> count:%s\n" % (id,i))
+		time.sleep(0.5)
+
+		
+>>> for i in range(5):
+	threading._start_new_thread(myThreadFunction, (i,))
+	time.sleep(3)
+	print('Finish')

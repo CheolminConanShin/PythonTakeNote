@@ -1,0 +1,22 @@
+>>> import sqlite3
+>>> def PointAdapter(point):
+	return "%f:%f" % (point.x, point.y)
+
+>>> def PointConverter(s):
+	x,y = list(map(float, s.decode().split(":")))
+	return Point(x, y)
+
+>>> sqlite3.register_adapter(Point, PointAdapter)
+>>> sqlite3.register_converter("point", PointConverter)
+>>> p = Point(4, -3.2)
+>>> p2 = Point(-1.4, 6.2)
+>>> con = sqlite3.connect(":memory:", detect_types=sqlite3.PARSE_DECLTYPES)
+>>> cur = con.cursor()
+>>> cur.execute("create table test(p point)")
+<sqlite3.Cursor object at 0x02E09E20>
+>>> cur.execute("insert into test values(?)", (p,))
+<sqlite3.Cursor object at 0x02E09E20>
+>>> cur.execute("select p from test")
+<sqlite3.Cursor object at 0x02E09E20>
+>>> print([r[0] for r in cur])
+[Point(4.000000, -3.200000)]

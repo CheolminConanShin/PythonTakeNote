@@ -1,0 +1,44 @@
+import sqlite3
+con = sqlite3.connect(":memory:")
+cur = con.cursor()
+cur.execute("create table PhoneBook(Name text, PhoneNumber text);")
+cur.execute("insert into PhoneBook Values('Derick', '010-1234-5678');")
+
+>>> name = "Gildong"
+>>> phoneNumber = "010-222-3333"
+>>> cur.execute("insert into PhoneBook values(?,?);", (name, phoneNumber))
+<sqlite3.Cursor object at 0x00650820>
+>>> cur.execute("insert into PhoneBook values(:inputName, :inputNum);", {"inputNum":phoneNumber, "inputName":name})
+<sqlite3.Cursor object at 0x00650820>
+>>> datalist = (('Tom','010-333-4444'), ('DSP','010-222-5555'))
+>>> cur.executemany("insert into PhoneBook values(?,?);", datalist)
+<sqlite3.Cursor object at 0x00650820>
+>>> def dataGenerator():
+	datalist = {('Tom','010-543-1111'), ('DSP','010-444-5555')}
+	for item in datalist:
+		yield item
+
+		
+>>> cur.executemany("insert into PhoneBook values(?,?);", dataGenerator())
+<sqlite3.Cursor object at 0x00650820>
+>>> cur.execute("select * from PhoneBook;")
+<sqlite3.Cursor object at 0x00650820>
+>>> for row in cur:
+	print(row)
+
+	
+('Derick', '010-1234-5678')
+('Gildong', '010-222-3333')
+('Gildong', '010-222-3333')
+('Tom', '010-333-4444')
+('DSP', '010-222-5555')
+('Tom', '010-543-1111')
+('DSP', '010-444-5555')
+>>> cur.execute("select * from PhoneBook;")
+<sqlite3.Cursor object at 0x00650820>
+>>> cur.fetchone()
+('Derick', '010-1234-5678')
+>>> cur.fetchmany(2)
+[('Gildong', '010-222-3333'), ('Gildong', '010-222-3333')]
+>>> cur.fetchall()
+[('Tom', '010-333-4444'), ('DSP', '010-222-5555'), ('Tom', '010-543-1111'), ('DSP', '010-444-5555')]

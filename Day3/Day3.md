@@ -80,3 +80,60 @@ transmap = str.maketrans("poieu", "P0129")
 "python is powerful".translate(transmap)
 # 'Pyth0n 1s P0w2rf9l'
 ```
+
+##### Match Search Split with Regular Expression
+```python
+bool(re.match('[0-9]*th','    35th'))
+# False
+bool(re.search('[0-9]*th','    35th'))
+# True
+>>> bool(re.search('\\\\\w+','\\apple'))
+# True
+bool(re.search(r'\\\w+',r'\apple'))
+# 백 슬레시가 몇개가 오든 상관없이 True
+
+# *은 0 ~ n개, +는 1 ~ n개, ?는 0이나 1개의 문자를 의미
+import re
+re.split('[:. ]', "apple orange:banana.tomato")
+# ['apple', 'orange', 'banana', 'tomato']
+re.split('[:. ]+', 'apple orange:::::banana...tomato')
+# ['apple', 'orange', 'banana', 'tomato']
+re.split('([:. ])+', 'apple orange::::banana..tomato')
+# ['apple', ' ', 'orange', ':', 'banana', '.', 'tomato']
+```
+
+##### Substitution
+```python
+import re
+"""sub함수는 문자열에 해당 그룹을 치환해주는 작업을 한다
+정규식에서 괄호()는 그룹을 의미하며 1번째 그룹을 치환 시켜준다."""
+re.sub(r"\b(\d{4}-\d{4})\b", r"<I>\1</I>", "Copyright Derick 1990-2000")
+# 'Copyright Derick <I>1990-2000</I>'
+```
+
+##### Find & Findall
+Find는 해당 문자가 가장처음 발견되면 리턴
+Findall은 해당 문자를 모두 리턴...?
+```python
+import re
+s = "Pen Pineapple Apple Pen"
+c = re.compile('Pen')
+c.findall(s)
+# ['Pen', 'Pen']
+c = re.compile('apple', re.I)
+c.findall(s)
+# ['apple', 'Apple'] re.I는 대소문자 구분 없이 re.M은 다중 행
+```
+
+##### Match
+```python
+import re
+telChecker = re.compile(r'(\d{2,3})-(\d{3,4})-(\d{4})')
+bool(telChecker.match("010-1111-1111"))
+# True
+m = telChecker.match("010-111-1111")
+m.groups()
+# ('010', '111', '1111')
+m.group(2)
+# '111'
+```

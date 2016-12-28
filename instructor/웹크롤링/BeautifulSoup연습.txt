@@ -1,0 +1,37 @@
+>>> from BeautifulSoup import BeautifulSoup
+>>> doc = ['<html><head><title>Page title</title></head>', '<body><p id="firstpara" align="center">This is paragraph <b>one</b>', '<p id="secondpara" align="blah">This is a paragraph <b>two</b>', '</html']
+>>> 
+>>> soup = BeautifulSoup(''.join(doc))
+>>> print soup.prettify()
+
+>>> soup.findAll('b')
+[<b>one</b>, <b>two</b>]
+>>> import re
+>>> tagsStartingWithB = soup.findAll(re.compile('^b'))
+>>> [tag.name for tag in tagsStartingWithB]
+[u'body', u'b', u'b']
+>>> soup.findAll(['title', 'p'])
+[<title>Page title</title>, <p id="firstpara" align="center">This is paragraph <b>one</b></p>, <p id="secondpara" align="blah">This is a paragraph <b>two</b></p>]
+>>> allTags = soup.findAll(True)
+>>> [tag.name for tag in allTags]
+[u'html', u'head', u'title', u'body', u'p', u'b', u'p', u'b']
+>>> soup.findAll(lambda tag:len(tag.attrs) == 2)
+[<p id="firstpara" align="center">This is paragraph <b>one</b></p>, <p id="secondpara" align="blah">This is a paragraph <b>two</b></p>]
+>>> soup.findAll(align="center")]
+SyntaxError: invalid syntax
+>>> soup.findAll(align="cener")
+[]
+>>> soup.findAll(align="center")
+[<p id="firstpara" align="center">This is paragraph <b>one</b></p>]
+>>> 
+>>> soup.findAll(align="center")
+[<p id="firstpara" align="center">This is paragraph <b>one</b></p>]
+>>> soup.findAll(id=re.compile("para$"))
+[<p id="firstpara" align="center">This is paragraph <b>one</b></p>, <p id="secondpara" align="blah">This is a paragraph <b>two</b></p>]
+>>> 
+>>> soup =BeautifulSoup("""Bob's<b>Bold</b>Barbeque Sauce now available <b class="hickory">Hickory</b> and <b class="lime">Lime</a>""")
+>>> 
+>>> soup.find("b", {"class":"lime"})
+<b class="lime">Lime</b>
+>>> soup.find("b", {"class":"hickory"})
+<b class="hickory">Hickory</b>

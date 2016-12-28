@@ -1,0 +1,44 @@
+>>> import xml.parsers.expat
+>>> def start_element(name, attrs):
+	print("Start element:", name, attrs)
+
+	
+>>> def char_data(data):
+	print("Character data:", repr(data))
+
+	
+>>> pa = xml.parsers.expat.ParserCreate()
+>>> pa.StartElementHandler = start_element
+>>> pa.CharacterDataHandler = char_data
+>>> pa.Parse("""<?xml version="1.0"?><book ISBN="1111"><title>Loving Python</title></book>""")
+Start element: book {'ISBN': '1111'}
+Start element: title {}
+Character data: 'Loving Python'
+1
+
+>> from xml.dom.minidom import *
+>>> xmlsrc = """<item><name>test</name></item>"""
+>>> doc = parseString(xmlsrc)
+>>> doc.toxml()
+'<?xml version="1.0" ?><item><name>test</name></item>'
+>>> names = doc.getElementsByTagName("name")
+>>> names
+[<DOM Element: name at 0x36f8210>]
+>>> names.length
+1
+>>> from xml.dom.minidom import parse, parseString
+>>> books = parse("c:\\work\\book.xml")
+>>> booklist = books.childNodes
+>>> type(booklist)
+<class 'xml.dom.minicompat.NodeList'>
+>>> len(booklist)
+1
+>>> booklist[0]
+<DOM Element: booklist at 0x36f8620>
+>>> booklist[0].nodeType
+1
+>>> book = booklist[0].childNodes
+>>> len(book)
+7
+>>> print(book)
+[<DOM Text node "'\n '">, <DOM Element: book at 0x36f85d0>, <DOM Text node "'\n '">, <DOM Element: book at 0x36f8df0>, <DOM Text node "'\n '">, <DOM Element: book at 0x36fd1c0>, <DOM Text node "'\n'">]

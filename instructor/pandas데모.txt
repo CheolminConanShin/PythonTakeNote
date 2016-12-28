@@ -1,0 +1,151 @@
+from pandas import Series, DataFrame
+
+Series
+Out[2]: pandas.core.series.Series
+
+type(Series)
+Out[3]: type
+
+import pandas
+
+pandas.Series
+Out[5]: pandas.core.series.Series
+
+kb = Series([37500, 36350, 38100, 37950, 37200, 36800])
+
+kb
+
+kb2 = Series([37500, 36350, 38100, 37950, 37200, 36800], index=['02-06', '02-05', '02-04','02-03','02-02','01-30'])
+
+kb2
+Out[10]: 
+02-06    37500
+02-05    36350
+02-04    38100
+02-03    37950
+02-02    37200
+01-30    36800
+dtype: int64
+
+kb2['02-06']
+Out[11]: 37500
+
+
+data = {'foreigner':[603100,405885,283715,365400,395333,39444],'sratio':[69.15,68.99,69.09,68.33,68.44, 67.22], 
+'org':[-175461,-491415,-103877,-66757,-200711,-356901], 'sprice':[37500,36350,37950,37200,36800,37111],
+ 'flutuation':[3.16,-4.59,0.40,2.02,1.09,-0.67]}
+
+frame = DataFrame(data)
+
+frame
+Out[24]: 
+   flutuation  foreigner     org  sprice  sratio
+0        3.16     603100 -175461   37500   69.15
+1       -4.59     405885 -491415   36350   68.99
+2        0.40     283715 -103877   37950   69.09
+3        2.02     365400  -66757   37200   68.33
+4        1.09     395333 -200711   36800   68.44
+5       -0.67      39444 -356901   37111   67.22
+
+type(frame)
+Out[25]: pandas.core.frame.DataFrame
+
+frame2 = DataFrame(data, columns=['foreigner', 'sratio', 'org', 'sprice', 'flutuation'], index=['02.06', '02.05', '02.04', '02.03', '02.02', '01.30'])
+
+frame2
+Out[31]: 
+       foreigner  sratio     org  sprice  flutuation
+02.06     603100   69.15 -175461   37500        3.16
+02.05     405885   68.99 -491415   36350       -4.59
+02.04     283715   69.09 -103877   37950        0.40
+02.03     365400   68.33  -66757   37200        2.02
+02.02     395333   68.44 -200711   36800        1.09
+01.30      39444   67.22 -356901   37111       -0.67
+
+frame2['sratio']
+Out[32]: 
+02.06    69.15
+02.05    68.99
+02.04    69.09
+02.03    68.33
+02.02    68.44
+01.30    67.22
+Name: sratio, dtype: float64
+
+frame2.ix['02.06']
+Out[33]: 
+foreigner     603100.00
+sratio            69.15
+org          -175461.00
+sprice         37500.00
+flutuation         3.16
+Name: 02.06, dtype: float64
+
+frame2.T
+Out[34]: 
+                02.06      02.05      02.04      02.03      02.02      01.30
+foreigner   603100.00  405885.00  283715.00  365400.00  395333.00   39444.00
+sratio          69.15      68.99      69.09      68.33      68.44      67.22
+org        -175461.00 -491415.00 -103877.00  -66757.00 -200711.00 -356901.00
+sprice       37500.00   36350.00   37950.00   37200.00   36800.00   37111.00
+flutuation       3.16      -4.59       0.40       2.02       1.09      -0.67
+
+import pandas.io.data as web
+C:\Anaconda3\lib\site-packages\pandas\io\data.py:33: FutureWarning: 
+The pandas.io.data module is moved to a separate package (pandas-datareader) and will be removed from pandas in a future version.
+After installing the pandas-datareader package (https://github.com/pydata/pandas-datareader), you can change the import ``from pandas.io import data, wb`` to ``from pandas_datareader import data, wb``.
+  FutureWarning)
+
+import datetime
+
+start = datetime.datetime(2015, 2, 2)
+
+end = datetime.datetime(2015, 2, 13)
+
+gs = web.DataReader("078930.KS", "yahoo", start, end)
+
+gs
+Out[41]: 
+             Open   High    Low  Close  Volume  Adj Close
+Date                                                     
+2015-02-02  42600  43200  41850  42250  522700   41014.62
+2015-02-03  42900  43100  42100  42400  262600   41160.23
+2015-02-04  43500  43500  42500  42500  302300   41257.31
+2015-02-05  42100  42500  41800  42200  184900   40966.08
+2015-02-06  42300  42400  41650  42350  296700   41111.70
+2015-02-09  42100  43000  42050  42250  155000   41014.62
+2015-02-10  42100  42950  42000  42250  143400   41014.62
+2015-02-11  42250  42750  41400  42300  252600   41063.16
+2015-02-12  41950  42200  41450  42100  281700   40869.01
+2015-02-13  42350  43150  42200  42300  310000   41063.16
+
+%pylab
+Using matplotlib backend: Qt4Agg
+Populating the interactive namespace from numpy and matplotlib
+
+import matplotlib.pyplot as plt
+
+plt.plot(gs['Close'])
+Out[47]: [<matplotlib.lines.Line2D at 0x5cc71b0>]
+
+start = datetime.datetime(2010, 1, 1)
+
+end = datetime.datetime(2016, 2, 24)
+
+samsung = web.DataReader("005930.KS", "yahoo", start, end)
+
+samsung.info()
+<class 'pandas.core.frame.DataFrame'>
+DatetimeIndex: 1588 entries, 2010-01-04 to 2016-02-23
+Data columns (total 6 columns):
+Open         1588 non-null float64
+High         1588 non-null float64
+Low          1588 non-null float64
+Close        1588 non-null float64
+Volume       1588 non-null int64
+Adj Close    1588 non-null float64
+dtypes: float64(5), int64(1)
+memory usage: 86.8 KB
+
+plt.plot(samsung['Close'])
+Out[56]: [<matplotlib.lines.Line2D at 0x61553f0>]

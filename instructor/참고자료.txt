@@ -1,0 +1,45 @@
+* 참고자료
+
+http://www.clien.net/cs2/bbs/board.php?bo_table=use
+<td class="post_subject">&nbsp;&nbsp;<a href='../bbs/board.php?bo_table=use&wr_id=913519' >알리발 미밴드2 스틸 스트랩 사용기</a> <span>[1]</span></td>
+		<td class="post_name"><span class='member'>7차선</span></td>
+
+pip install setuptools --upgrade
+pip install beautifulsoup4
+pip install --upgrade html5lib==1.0b8
+
+파이썬 재단 
+https://www.python.org/
+
+비주얼스튜디오 커뮤니티 에디션
+https://www.visualstudio.com/ko-kr/products/visual-studio-community-vs.aspx
+
+뷰티플스프
+http://www.crummy.com/software/BeautifulSoup/
+
+GUI라이브러리(PyQt)
+https://www.riverbankcomputing.com/software/pyqt/download5
+
+(실행파일로 배포만들기)
+https://cx-freeze.readthedocs.org/en/latest/
+
+참고도서
+[도서] 밑바닥부터 시작하는 데이터 과학 : 데이터 분석을 위한 파이썬 프로그래밍과 수학, 통계 기초
+머신러닝을 이용한 알고리즘 트레이딩 시스템 개발 
+파이썬 완벽 가이드 
+파이썬 라이브러리를 활용한 데이터 분석
+해커의 언어, 치명적 파이썬 
+파이썬 웹 프로그래밍, 실전편 : Django(장고)를 활용한 쉽고 빠른 웹 개발
+matplotlib을 이용한 데이터 시각화 프로그래밍: 
+
+
+
+Django Framework 다운로드 
+https://www.djangoproject.com/
+https://django-document-korean.readthedocs.org/en/old_master/index.html
+
+아나콘다 다운로드 
+http://continuum.io/downloads
+
+http://www.clien.net/cs2/bbs/board.php?bo_table=park
+https://commons.wikimedia.org/wiki/%EB%8C%80%EB%AC%B8

@@ -1,0 +1,21 @@
+*최근 트랜드 
+
+Java		.NET
+(60%)		(20%)
+
+구글 -  안드로이드 플랫폼(Java기반)
+(90%)
+애플 - iOS 플랫폼(Objective-C, Swift기반) 
+(10%)
+MS - 윈도우 플랫폼(C#, VB.NET기반)
+
+
+웹 기반의 플랫폼 
+
+클라이언트		웹서버		DB서버 
+JavaScript
+(HTML5&CSS3)		node.js		mongoDB
+
+
+			JSP
+			ASP.NET 

@@ -1,0 +1,9 @@
+*강의장 환경
+
+강사PC: \\m505ins
+공유폴더: Instructor
+계정: student
+암호: ajfzoa (영문 자판 상태에서 한글로 멀캠) 
+
+브릿지: LearningMind
+암호: T0049694

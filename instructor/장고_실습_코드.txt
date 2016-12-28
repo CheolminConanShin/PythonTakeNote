@@ -1,0 +1,49 @@
+url(r'^polls/$','polls.views.index'),
+url(r'^polls/(?P<poll_id>\d+)/$','polls.views.detail'),
+url(r'^polls/(?P<poll_id>\d+)/results/$','polls.views.results'),
+url(r'^polls/(?P<poll_id>\d+)/vote/$','polls.views.vote'),
+
+
+{%if latest_poll_list%}
+<ul>
+{%for poll in latest_poll_list%}
+<li><a href="/polls/{{poll.id}}/">{{poll.question}}</a></li>
+{%endfor%}
+</ul>
+{%else%}
+<p>No polls are available.</p>
+{%endif%}
+
+
+
+<h1>{{poll.question}}</h1>
+<ul>
+{%for choice in poll.choice_set.all%}
+<li>{{choice.choice}}</li>
+{%endfor%}
+</ul>
+
+
+<h1>{{poll.question}}</h1>
+
+{%if error_message%}<p><strong>{{error_message}}</strong></p>{%endif%}
+
+<form action="/polls/{{poll.id}}/vote/" method="post">
+{%csrf_token%}
+{%for choice in poll.choice_set.all%}
+<input type="radio" name="choice" id="choice{{forloop.counter}}" value="{{choice.id}}"/>
+<label for="choice{{forloop.counter}}">{{choice.choice}}</label><br/>
+{%endfor%}
+<input type="submit"value="Vote"/>
+</form>
+
+
+<h1>{{poll.question}}</h1>
+
+<ul>
+{%for choice in poll.choice_set.all%}
+<li>{{choice.choice}} -- {{choice.votes}} vote{{choice.votes|pluralize}}</li>
+{%endfor%}
+</ul>
+
+<a href="/polls/{{poll.id}}/">Vote again?</a>
