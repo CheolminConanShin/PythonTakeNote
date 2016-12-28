@@ -137,3 +137,12 @@ m.groups()
 m.group(2)
 # '111'
 ```
+
+##### Parameterize Regular Expression
+```python
+"""??P라는 구문으로 해당 그룹명을 정의해 줄 수 있다.
+<> 안에는 그룹의 명을 정의한다."""
+m = re.match(r"(?P<area_code>\d+)-(?P<exchange_number>\d+)-(?P<user_number>\d+)", "02-123-4567")
+m.group("user_number")
+# '4567'
+```
