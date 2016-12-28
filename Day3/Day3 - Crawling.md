@@ -66,7 +66,7 @@ b['class'] = 'extra class'
 print(soup) # <html><head></head><body><b class="extra class" id="3">연습</b></body></html>
 ```
 
-### Clien Crawling
+### 클리앙 Crawling
 ```python
 import urllib.request
 from bs4 import BeautifulSoup
@@ -90,7 +90,7 @@ for idx, item in enumerate(list):
 ```
 
 ### Key Word Search
-Clien 계시판 페이지 1~6 중에서 청와대 키워드로 Data Crawling
+클리앙 계시판 페이지 1~6 중에서 '청와대' 키워드로 Data Crawling
 ```python
 from bs4 import BeautifulSoup
 import urllib.request
