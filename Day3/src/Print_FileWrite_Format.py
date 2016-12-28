@@ -3,24 +3,24 @@ print("Welcome to", "Python", sep='-', end='!', file=sys.stderr)
 # Welcome to-Python!
 
 # Print로 파일 쓰기
-f = open("C:\\Users\\student\\Documents\\note\\Day3\\data.txt", "wt")
+f = open("C:\\Users\\student\\Documents\\note\\Day3\\src\\data.txt", "wt")
 print("file write", file=f)
 f.close()
 f.closed
 
 # 파일 쓰기
-f = open("C:\\Users\\student\\Documents\\note\\Day3\\data.txt", "wt")
+f = open("C:\\Users\\student\\Documents\\note\\Day3\\src\\data.txt", "wt")
 f.write("한글로 문자열 저장\n")
 f.write("1234\n")
 f.close()
 
 # 파일 읽기
-f = open("C:\\Users\\student\\Documents\\note\\Day3\\data.txt", "rt")
+f = open("C:\\Users\\student\\Documents\\note\\Day3\\src\\data.txt", "rt")
 f.read()
 f.close()
 
 # 한줄씩 불러오기
-f = open("C:\\Users\\student\\Documents\\note\\Day3\\data.txt", "rt")
+f = open("C:\\Users\\student\\Documents\\note\\Day3\\src\\data.txt", "rt")
 lst = f.readlines()
 for item in lst:
     print(item)

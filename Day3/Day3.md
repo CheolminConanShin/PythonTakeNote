@@ -5,12 +5,10 @@
 class NegativeDivisionError(Exception):
     def __init__(self, value):
         self.value = value
-
 def PositiveDivide(a,b):
     if(b < 0):
         raise NegativeDivisionError(b)
     return a / b
-
 try:
     ret = PositiveDivide(10, -3)
     print('10 / -1 = {0}'.format(ret))
@@ -29,6 +27,7 @@ finally:
 print("Welcome to", "Python", sep='-', end='!', file=sys.stderr)
 # Welcome to-Python!
 ```
+
 ##### File Read & Write
 ```python
 # Print로 파일 쓰기
@@ -73,4 +72,11 @@ print("{0:b}".format(10)) # 2진수 1010
 print("{0:e}".format(4/3)) # 1.333333e+00
 print("{0:f}".format(4/3)) # 1.333333
 print("{0:.2f}".format(4/3)) # 자리수 표시 1.33
+```
+
+##### Translation Map
+```python
+transmap = str.maketrans("poieu", "P0129")
+"python is powerful".translate(transmap)
+# 'Pyth0n 1s P0w2rf9l'
 ```
