@@ -71,6 +71,9 @@
 			return self.question
 		def was_published_recently(self): # 발행된지 하루가 지났는지 확인하는 함수
 			return self.pub_date >= timezone.now() - datetime.timedelta(days=1)
+		was_published_recently.admin_order_field = 'pub_date'
+		was_published_recently.boolean = True
+		was_published_recently.short_description = "최근 발행 여부"
 	```
 	2. Choice class에 함수 추가
 	```python
@@ -94,10 +97,45 @@
 	# True
 ```
 - Choice Set 생성
-<!-- -->
-	```python
+```python
 	p.choice_set.create(choice='One', votes=0)
 	# <Choice: One>
 	p.choice_set.create(choice='Two', votes=0)
 	# <Choice: Two>
+```
+
+#### 화면 그리기
+- mysite > urls.py 파일 수정
+	1. 1번째 import 구문 `from django.conf.urls import include, url`
+	2. url pattern 추가 `url(r'^polls/', include('polls.urls')),`
+- polls 폴더에 urls.py 파일 생성
+```python
+	from django.conf.urls import include, url
+	from . import views # 같은 디렉토리에 views파일을 import
+	urlpatterns = [
+	]
+```
+- http://127.0.0.1:8000/admin 페이지로 들어가서 로그인 후 화면 확인
+- admin.py 파일 수정
+	```python
+	from django.contrib import admin
+	from polls.models import Poll
+	from polls.models import Choice
+
+	# Register your models here.
+	class ChoiceInline(admin.TabularInline):
+		model = Choice
+		extra = 3
+
+	class PollAdmin(admin.ModelAdmin):
+		fieldsets = [
+			('설문 관련 내용', {'fields': ['question']}),
+			('날짜 관련 내용', {'fields': ['pub_date'], 'classes': ['collapse']}),
+		]
+		inlines = [ChoiceInline]
+		list_display = ('question', 'pub_date', 'was_published_recently')
+		list_filter = ['pub_date']
+		search_fields = ['question']
+
+	admin.site.register(Poll, PollAdmin)
 	```

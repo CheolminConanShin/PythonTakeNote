@@ -11,6 +11,9 @@ class Poll(models.Model):
     # 최근에 발행된 설문인지 여부를 리턴
     def was_published_recently(self):
         return self.pub_date >= timezone.now() - datetime.timedelta(days=1)
+    was_published_recently.admin_order_field = 'pub_date'
+    was_published_recently.boolean = True
+    was_published_recently.short_description = "최근 발행 여부"
 
 class Choice(models.Model):
     poll = models.ForeignKey(Poll)
