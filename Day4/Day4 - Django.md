@@ -25,19 +25,18 @@
 
 #### Project Model 생성
 - polls라는 디렉토리에 models.py 파일에 해당 클래스 생성
-```python
-from django.db import models
+    ```python
+    from django.db import models
+    
+    class Poll(models.model):
+        question = models.CharField('설문내용', max_length=200)
+        pub_date = models.DateTimeField('설문 저장 날짜')
 
-# Create your models here.
-class Poll(models.model):
-    question = models.CharField('설문내용', max_length=200)
-    pub_date = models.DateTimeField('설문 저장 날짜')
-
-class Choice(models.model):
-    poll = models.ForeignKey(Poll)
-    choice = models.CharField('설문 보기', max_length=200)
-    votes = models.IntegerField()
-```
+    class Choice(models.model):
+        poll = models.ForeignKey(Poll)
+        choice = models.CharField('설문 보기', max_length=200)
+        votes = models.IntegerField()
+    ```
 - mysite 디렉토리 안에 settings.py에 polls를 추가
 - 변경 사항을 적용 전 확인 한다 `python manage.py makemigrations`
 - 필요한 기본 인프라를 추가 한다 `python manage.py migrate`
@@ -75,25 +74,25 @@ class Choice(models.model):
         def __str__(self):
             return self.choice
 - Shell 스크립트로 돌아가서 Poll을 확인할 수 있다
-```python
-from polls.models import Poll, Choice
-Poll.objects.all()
-# [<Poll: What's up?>]
-Poll.objects.filter(id=1)
-# [<Poll: What's up?>]
-Poll.objects.get(id=1)
-# <Poll: What's up?>
-```
-- 툭정 Poll을 참조
-```python
-p = Poll.objects.get(pk=1)
-p.was_published_recently()
-# True
-```
+    ```python
+    from polls.models import Poll, Choice
+    Poll.objects.all()
+    # [<Poll: What's up?>]
+    Poll.objects.filter(id=1)
+    # [<Poll: What's up?>]
+    Poll.objects.get(id=1)
+    # <Poll: What's up?>
+    ```
+- 특정 Poll을 참조
+    ```python
+    p = Poll.objects.get(pk=1)
+    p.was_published_recently()
+    # True
+    ```
 - Choice Set 생성
-```python
-p.choice_set.create(choice='One', votes=0)
-# <Choice: One>
-p.choice_set.create(choice='Two', votes=0)
-# <Choice: Two>
-```
+    ```python
+    p.choice_set.create(choice='One', votes=0)
+    # <Choice: One>
+    p.choice_set.create(choice='Two', votes=0)
+    # <Choice: Two>
+    ```
