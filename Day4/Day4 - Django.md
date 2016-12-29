@@ -11,3 +11,6 @@
     3. C:\django\Lib\ 밑에 site-packages 폴더를 생성한다
 - 기존에 Django 압축 해제를 한 폴더로 이동해서 python setup.py install --prefix=c:\django 실행
 
+#### Project 생성
+- Django가 설치된 디렉토리로 이동해서 django-admin-script.py startproject mysite 실행
+- mysite 디렉토리로 이동해서 python manage.py runserver 실행하면 Test Server가 실행된다
