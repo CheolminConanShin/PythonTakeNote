@@ -45,34 +45,38 @@
 	2. 현재 존재하는 poll list 호출 `Poll.objects.all()` => [] 빈 리스트
 	3. 샘플 Poll을 생성해 보자
 	```python
-	from django.utils import timezone
-	p = Poll(question="What's new?", pub_date=timezone.now())
-	p.save()
-	p.id
-	# 1 자동 생성된 id
-	p.question
-	# "What's new?"
-	p.pub_date
-	# datetime.datetime(2016, 12, 29, 6, 48, 43, 852581, tzinfo=<UTC>)
+		from django.utils import timezone
+		p = Poll(question="What's new?", pub_date=timezone.now())
+		p.save()
+		p.id
+		# 1 자동 생성된 id
+		p.question
+		# "What's new?"
+		p.pub_date
+		# datetime.datetime(2016, 12, 29, 6, 48, 43, 852581, tzinfo=<UTC>)
 	```
 	4. Poll을 수정해 보자
-		```python
+	```python
 		p.question = "What's up?"
 		p.save()
 		p.question
 		# "What's up?" 수정된게 확인된다
-		```
+	```
 
 #### Poll & Choice Model 수정
 - Model에 문자열을 리턴하는 함수 정의
 	1. Poll class에 함수 추가
+	```python
 		def __str__(self): # 문자열을 리턴하는 함수
 			return self.question
 		def was_published_recently(self): # 발행된지 하루가 지났는지 확인하는 함수
 			return self.pub_date >= timezone.now() - datetime.timedelta(days=1)
+	```
 	2. Choice class에 함수 추가
+	```python
 		def __str__(self):
 			return self.choice
+	```
 - Shell 스크립트로 돌아가서 Poll을 확인할 수 있다
 	```python
 	from polls.models import Poll, Choice
