@@ -27,7 +27,7 @@
 - polls라는 디렉토리에 models.py 파일에 해당 클래스 생성
 	```python
 	from django.db import models
-	
+
 	class Poll(models.model):
 		question = models.CharField('설문내용', max_length=200)
 		pub_date = models.DateTimeField('설문 저장 날짜')
@@ -78,7 +78,7 @@
 			return self.choice
 	```
 - Shell 스크립트로 돌아가서 Poll을 확인할 수 있다
-	```python
+```python
 	from polls.models import Poll, Choice
 	Poll.objects.all()
 	# [<Poll: What's up?>]
@@ -86,17 +86,17 @@
 	# [<Poll: What's up?>]
 	Poll.objects.get(id=1)
 	# <Poll: What's up?>
-	```
+```
 - 특정 Poll을 참조
-	```python
+```python
 	p = Poll.objects.get(pk=1)
 	p.was_published_recently()
 	# True
-	```
+```
 - Choice Set 생성
-	```python
+```python
 	p.choice_set.create(choice='One', votes=0)
 	# <Choice: One>
 	p.choice_set.create(choice='Two', votes=0)
 	# <Choice: Two>
-	```
+```
