@@ -44,17 +44,17 @@
 	1. 생성한 model들을 import `from polls.models import Poll, Choice`
 	2. 현재 존재하는 poll list 호출 `Poll.objects.all()` => [] 빈 리스트
 	3. 샘플 Poll을 생성해 보자
-		```python
-		from django.utils import timezone
-		p = Poll(question="What's new?", pub_date=timezone.now())
-		p.save()
-		p.id
-		# 1 자동 생성된 id
-		p.question
-		# "What's new?"
-		p.pub_date
-		# datetime.datetime(2016, 12, 29, 6, 48, 43, 852581, tzinfo=<UTC>)
-		```
+```python
+from django.utils import timezone
+p = Poll(question="What's new?", pub_date=timezone.now())
+p.save()
+p.id
+# 1 자동 생성된 id
+p.question
+# "What's new?"
+p.pub_date
+# datetime.datetime(2016, 12, 29, 6, 48, 43, 852581, tzinfo=<UTC>)
+```
 	4. Poll을 수정해 보자
 		```python
 		p.question = "What's up?"
