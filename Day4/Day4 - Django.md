@@ -106,8 +106,14 @@
 
 #### 화면 그리기
 - mysite > urls.py 파일 수정
-	1. 1번째 import 구문 `from django.conf.urls import include, url`
-	2. url pattern 추가 `url(r'^polls/', include('polls.urls')),`
+	1. 1번째 import 구문
+	```python
+	from django.conf.urls import include, url
+	```
+	2. url pattern 추가
+	```python
+	url(r'^polls/', include('polls.urls')),
+	```
 - polls 폴더에 urls.py 파일 생성
 ```python
 	from django.conf.urls import include, url
