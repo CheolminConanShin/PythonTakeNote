@@ -133,8 +133,11 @@
 			('날짜 관련 내용', {'fields': ['pub_date'], 'classes': ['collapse']}),
 		]
 		inlines = [ChoiceInline]
+		# 초기 테이블에 보여질 정보
 		list_display = ('question', 'pub_date', 'was_published_recently')
+		# 필터 기능
 		list_filter = ['pub_date']
+		# 검색 기능
 		search_fields = ['question']
 
 	admin.site.register(Poll, PollAdmin)
