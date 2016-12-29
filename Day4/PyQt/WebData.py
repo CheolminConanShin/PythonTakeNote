@@ -1,5 +1,6 @@
 # encoding:utf-8
 import sys
+import os
 from PyQt5 import QtWidgets
 from PyQt5 import QtGui
 from PyQt5 import uic
@@ -11,7 +12,8 @@ from bs4 import BeautifulSoup
 class Form(QtWidgets.QMainWindow):
     def __init__(self, parent=None):
         QtWidgets.QDialog.__init__(self, parent)
-        self.ui = uic.loadUi("WebData.ui", self)
+        uiFilePath = os.path.join(os.path.dirname(os.path.realpath(__file__)), "WebData.ui")
+        self.ui = uic.loadUi(uiFilePath, self)
         self.ui.show()
 
     @pyqtSlot()
@@ -19,8 +21,8 @@ class Form(QtWidgets.QMainWindow):
         data = urllib.request.urlopen('http://comic.naver.com/webtoon/list.nhn?titleId=20853&weekday=fri')
         soup = BeautifulSoup(data, 'html5lib')
         cartoons = soup.findAll("td", attrs={"class":"title"})
-        
-        f = open("webtoon.txt", "a+", encoding="utf-8")
+        # a+ 는 append라는 의미로 해당 파일이 없으면 생성, 있으면 추가 
+        f = open("./Day4/PyQt/webtoon.txt", "a+", encoding="utf-8")
 
         for item in cartoons:
             title = item.find('a').text
