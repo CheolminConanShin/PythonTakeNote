@@ -41,7 +41,8 @@ for row in cur:
 con.commit()
 con.close()
 ```
-외부에서 db파일을 사용 가능
+
+- 외부에서 db파일을 사용 가능
 ```python
 con = sqlite3.connect("file_path_to\\file.db")
 cur = con.cursor()
