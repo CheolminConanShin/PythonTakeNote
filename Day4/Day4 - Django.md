@@ -94,6 +94,7 @@
 	# True
 ```
 - Choice Set 생성
+<!-- -->
 	```python
 	p.choice_set.create(choice='One', votes=0)
 	# <Choice: One>
