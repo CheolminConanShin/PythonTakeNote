@@ -1,6 +1,6 @@
 ### 본격 Django 가이드
 ##### Installation
-- 먼저 Django.tar.gz 파일을 다운 받는다
+- 먼저 [Django.tar.gz]("Django/Django-1.9.1.tar.gz") 파일을 다운 받는다
 - 원하는 경로에 압축을 푼다
 - 환경변수 Setting
     - C:\Python34와 ;C:\Python34\Scripts;를 path에 추가
