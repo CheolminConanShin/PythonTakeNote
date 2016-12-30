@@ -115,12 +115,12 @@
 	url(r'^polls/', include('polls.urls')),
 	```
 - polls 폴더에 urls.py 파일 생성
-```python
+	```python
 	from django.conf.urls import include, url
 	from . import views # 같은 디렉토리에 views파일을 import
 	urlpatterns = [
 	]
-```
+	```
 - http://127.0.0.1:8000/admin 페이지로 들어가서 로그인 후 화면 확인
 - admin.py 파일 수정
 	```python
