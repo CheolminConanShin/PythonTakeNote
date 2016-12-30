@@ -2,7 +2,7 @@
 #### Installation
 - [Anaconda Download](https://docs.continuum.io/anaconda/install)
 - 설치시 'just me' 선택
-- Jupyter QtConsole에서 `%pylab` 실행
+- Jupyter QtConsole에서 `%pylab` 실행 (numpy와 matplotlib을 사용할 수 있게 해주는 명령어)
 
 #### Read CSV Data File
 ```python
@@ -127,4 +127,45 @@ plt.plot(randn(50).cumsum(), 'k--')
 ax1.hist(randn(100), bins=20, color='g', alpha=0.9)
 # 두번째 그래프에 Scatter Chart Plot
 ax2.scatter(np.arange(30), np.arange(30) + 3*randn(30))
+
+# Legend
+data = randn(30).cumsum()
+plt.plot(data, 'k--', label='Default')
+plt.plot(data, 'k--', drawstyle='steps-post', label='steps-post')
+plt.legend(loc='best')
+
+fig = plt.figure()
+ax = fig.add_subplot(1, 1, 1)
+ax.plot(randn(1000).cumsum())
+# Tick
+ticks = ax.set_xticks([0, 250, 500, 750, 1000])
+# Label
+labels = ax.set_xticklabels(['one', 'two', 'three', 'four', 'five'], rotation=30, fontsize='small')
+# Title
+ax.set_title("My Title")
+```
+
+#### Grouping
+```python
+df = DataFrame({'key1':['a','a','b','b','a'], 'key2':['one','two','one','two','one'],
+'data1':np.random.randn(5), 'data2':np.random.randn(5)})
+# data1을 key1(a, b)를 기준으로 group
+grouped = df['data1'].groupby(df['key1'])
+grouped.mean()
+"""
+a    0.427675
+b   -0.096526
+"""
+grouped.count()
+"""
+a    3
+b    2
+"""
+means = df['data1'].groupby([df['key1'], df['key2']]).mean()
+"""
+a     one     1.046392
+      two    -0.809760
+b     one     0.979846
+      two    -1.172899
+"""
 ```
