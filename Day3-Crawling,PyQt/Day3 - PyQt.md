@@ -1,6 +1,6 @@
 ### PyQt
 ##### 다운로드 및 설치
-- [PyQt5 다운로드]('https://www.riverbankcomputing.com/software/pyqt/download5')
+- [PyQt5 다운로드](https://www.riverbankcomputing.com/software/pyqt/download5)
 - 쭉~ 설치하세요
 
 ### PyQt Designer와 연결하기

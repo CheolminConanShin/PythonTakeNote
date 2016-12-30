@@ -1,6 +1,6 @@
 ### Anaconda
 #### Installation
-- [Anaconda Download]('https://docs.continuum.io/anaconda/install')
+- [Anaconda Download](https://docs.continuum.io/anaconda/install)
 - 설치시 'just me' 선택
 - Jupyter QtConsole에서 `%pylab` 실행
 
