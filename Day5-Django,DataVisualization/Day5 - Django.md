@@ -53,7 +53,7 @@ def vote(request, poll_id):
 
 - mytemplates안에 polls폴더 생성, 해당 폴더 안에 index.html파일 생성
 ```html
-# mytemplates > polls > index.html
+<!-- mytemplates > polls > index.html -->
 {%if latest_poll_list%}
 <ul>
 {%for poll in latest_poll_list%}
