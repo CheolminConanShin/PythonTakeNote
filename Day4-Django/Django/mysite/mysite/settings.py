@@ -56,7 +56,10 @@ ROOT_URLCONF = 'mysite.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            'C:/Users/student/Documents/note/Day4-Django/Django/mysite/mytemplates/admin',
+            'C:/Users/student/Documents/note/Day4-Django/Django/mysite/mytemplates',
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
